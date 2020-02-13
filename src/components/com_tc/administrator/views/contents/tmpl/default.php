@@ -57,7 +57,7 @@ $listDirn  = $this->state->get('list.direction');
 						<?php echo HTMLHelper::_('searchtools.sort',  'COM_TC_CONTENTS_VERSION', 'a.version', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
-						<?php echo HTMLHelper::_('searchtools.sort',  'COM_TC_CONTENTS_CLIENT', 'a.client', $listDirn, $listOrder); ?>
+						<?php echo HTMLHelper::_('searchtools.sort',  'COM_TC_USERTCS_TC_CODE', 'a.client', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
 						<?php echo HTMLHelper::_('searchtools.sort',  'COM_TC_CONTENTS_START_DATE', 'a.start_date', $listDirn, $listOrder); ?>

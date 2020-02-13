@@ -71,22 +71,16 @@ $listDirn  = $this->state->get('list.direction');
 					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_NAME', 'uc.`name`', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
-					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_ID', 'a.`tc_id`', $listDirn, $listOrder); ?>
-					</th>
-					<th class='left'>
 					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_TITLE', 'c.`title`', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
-					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_CLIENT', 'c.`client`', $listDirn, $listOrder); ?>
+					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_TC_CODE', 'c.`client`', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
 					<?php echo JHtml::_('grid.sort',  'COM_TC_CONTENTS_VERSION', 'c.`version`', $listDirn, $listOrder); ?>
 					</th>
 					<th class='left'>
 					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_ACCEPTED_DATE', 'a.`accepted_date`', $listDirn, $listOrder); ?>
-					</th>
-					<th class='left'>
-					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_USERID', 'a.`user_id`', $listDirn, $listOrder); ?>
 					</th>
 				</tr>
 				</thead>
@@ -106,8 +100,7 @@ $listDirn  = $this->state->get('list.direction');
 						</td>
 						<td>
 							<?php echo $this->escape($item->name); ?>
-						<td>
-							<?php echo $item->tc_id; ?>
+						</td>
 						<td>
 							<?php echo $this->escape($item->title); ?>
 						</td>
@@ -119,9 +112,6 @@ $listDirn  = $this->state->get('list.direction');
 						</td>
 						<td>
 							<?php echo $item->accepted_date; ?>
-						</td>
-						<td>
-							<?php echo $item->user_id; ?>
 						</td>
 					</tr>
 				<?php
