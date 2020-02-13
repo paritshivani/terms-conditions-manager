@@ -15,7 +15,7 @@
 
     <field name="version" required="true" class="validate-version" label="COM_TC_FORM_LBL_CONTENT_VERSION" description="COM_TC_FORM_DESC_CONTENT_VERSION" hint="COM_TC_FORM_LBL_CONTENT_VERSION"/>
 
-    <field name="client" required="true" id="client_id" class="validate-client" label="COM_TC_FORM_LBL_CONTENT_CLIENT" description="COM_TC_FORM_DESC_CONTENT_CLIENT" hint="COM_TC_FORM_LBL_CONTENT_CLIENT" />
+    <field name="client" required="true" id="client_id" class="validate-client" label="COM_TC_FORM_LBL_CONTENT_TC_CODE" description="COM_TC_FORM_DESC_CONTENT_CLIENT" hint="COM_TC_FORM_LBL_CONTENT_TC_CODE" />
 
     <field name= "url_pattern"  id="url_pattern_id" description= "COM_TC_FORM_LBL_CONTENT_URL_PATTERN_DESC"  type= "subform"  label= "COM_TC_FORM_LBL_CONTENT_URL_PATTERN"  min= "1"  max= "1000"  formsource= "/administrator/components/com_tc/models/forms/url_pattern.xml"  multiple= "true"  buttons= "add,remove"  layout="joomla.form.field.subform.repeatable-table" groupByFieldset="false" />
     <field name="start_date"
