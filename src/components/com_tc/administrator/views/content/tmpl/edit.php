@@ -112,7 +112,7 @@ JHtml::_('behavior.formvalidator');
 							valid = true;
 						}
 						else if (tcVersion <= data) {
-							alert('<?php echo JText::_('JGLOBAL_VALIDATION_FORM_LATEST_VERSION_TC'); ?>' + data +
+						alert('<?php echo JText::_('JGLOBAL_VALIDATION_FORM_LATEST_VERSION_TC', ); ?>'+ tcClient +' - '+ data +
 								'<?php echo JText::_('JGLOBAL_VALIDATION_FORM_GREATER_VERSION_TC'); ?>');
 							jQuery('#jform_version').val('');
 
