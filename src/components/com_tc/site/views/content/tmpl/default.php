@@ -28,9 +28,6 @@ defined('_JEXEC') or die('Restricted access');
 		</script>
 		<?php if (!empty($this->tc_id))
 		{?>
-			<div class="alert alert-warning">
-				<b><?php echo JText::_("COM_TC_TERMS_AND_CONDITIONS_MSG"); ?></b>
-			</div>
 			<div class="well">
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>

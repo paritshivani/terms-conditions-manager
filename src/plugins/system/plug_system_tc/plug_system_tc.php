@@ -92,7 +92,7 @@ class PlgSystemplug_System_Tc extends JPlugin
 					if ($option != 'com_tc' && $view != 'content' && $tc_id != $getGlobalTCAcceptIdList[$i]->tc_id)
 					{
 						$tc_url = 'index.php?option=com_tc&view=content&tc_id=';
-
+						JFactory::getApplication()->enqueueMessage(JText::_('COM_TC_TERMS_AND_CONDITIONS_MSG'), 'Notice');
 						// Redirect to Terms and condtitions view
 						$this->app->redirect(JRoute::_(JURI::root() . $tc_url . $getGlobalTCAcceptIdList[$i]->tc_id . '&return=' . $url));
 					}
