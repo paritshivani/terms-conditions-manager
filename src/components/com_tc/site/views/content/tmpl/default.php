@@ -26,13 +26,18 @@ defined('_JEXEC') or die('Restricted access');
 				}
 			}
 		</script>
-
 		<?php if (!empty($this->tc_id))
 		{?>
+			<div class="alert alert-warning">
+				<b><?php echo JText::_("COM_TC_TERMS_AND_CONDITIONS_MSG"); ?></b>
+			</div>
+			<div class="well">
+				<!-- <?php echo JText::_("COM_TC_TERMS_AND_CONDITIONS_MSG"); ?> -->
+
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?> &nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->termsandconditions->modified_on; ?>
+				<b><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->termsandconditions->modified_on; ?></b>
 			</div>
 			<br>
 			<div class="">
@@ -59,4 +64,5 @@ defined('_JEXEC') or die('Restricted access');
 			<button class="btn btn-primary" type="submit" value="Submit" name="Submit">
 			<?php echo JText::_('COM_TC_ACCEPT_TERMSANDCONDITIONS_BUTTON'); ?></button>
 			</form>
+		</div>
 		</div>
