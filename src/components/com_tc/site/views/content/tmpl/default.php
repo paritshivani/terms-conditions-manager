@@ -32,8 +32,6 @@ defined('_JEXEC') or die('Restricted access');
 				<b><?php echo JText::_("COM_TC_TERMS_AND_CONDITIONS_MSG"); ?></b>
 			</div>
 			<div class="well">
-				<!-- <?php echo JText::_("COM_TC_TERMS_AND_CONDITIONS_MSG"); ?> -->
-
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
 				<b><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
