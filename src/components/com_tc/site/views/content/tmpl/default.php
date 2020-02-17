@@ -28,11 +28,11 @@ defined('_JEXEC') or die('Restricted access');
 		</script>
 		<?php if (!empty($this->tc_id))
 		{?>
-			<div class="well">
+			<div class="well well-condensed">
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
-				<b><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->termsandconditions->modified_on; ?></b>
+				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->termsandconditions->modified_on; ?></strong>
 			</div>
 			<br>
 			<div class="">
