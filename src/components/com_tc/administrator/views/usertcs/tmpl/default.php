@@ -16,7 +16,6 @@ JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 use Joomla\CMS\Layout\LayoutHelper;
-use \Joomla\CMS\Component\ComponentHelper;
 $listOrder = $this->state->get('list.ordering');
 $listDirn  = $this->state->get('list.direction');
 ?>
@@ -113,18 +112,8 @@ Joomla.submitbutton = function(action)
 				<tbody>
 				<?php
 				foreach ($this->items as $i => $item) :
-					// To get the foematted date
-						$comParams = ComponentHelper::getParams('com_tc');
-						$dateFormat = $comParams->get('date_format_show');
 
-					if ($dateFormat == "custom")
-						{
-							$dateFormat = $comParams->get('custom_format');
-						}
-
-						$this->accepted_date = HTMLHelper::_('date', $item->accepted_date, $dateFormat, true);
-
-
+						$acceptedDate = HTMLHelper::_('date', $item->accepted_date, $this->dateFormat, true);
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td class="hidden-phone">
@@ -143,7 +132,7 @@ Joomla.submitbutton = function(action)
 							<?php echo $item->version; ?>
 						</td>
 						<td>
-							<?php echo $this->accepted_date; ?>
+							<?php echo $acceptedDate; ?>
 						</td>
 					</tr>
 				<?php

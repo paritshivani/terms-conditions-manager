@@ -31,25 +31,12 @@ use \Joomla\CMS\Component\ComponentHelper;
 		</script>
 		<?php if (!empty($this->tc_id))
 		{
-			// To get the foematted date
-						$comParams = ComponentHelper::getParams('com_tc');
-						$dateFormat = $comParams->get('date_format_show');
-
-			if ($dateFormat == "custom")
-						{
-							$dateFormat = $comParams->get('custom_format');
-						}
-
-						$this->modified_on = HTMLHelper::_('date', $this->termsandconditions->modified_on, $dateFormat, true);
-
-
-
 			?>
 			<div class="well well-condensed">
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
 				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->modified_on; ?><strong>
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . HTMLHelper::_('date', $this->termsandconditions->modified_on, $this->dateFormat, true); ?><strong>
 			</div>
 			<br>
 			<div class="">

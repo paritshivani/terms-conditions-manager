@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
-
+use \Joomla\CMS\Component\ComponentHelper;
 /**
  * View class for a list of Tc.
  *
@@ -56,7 +56,14 @@ class TcViewUsertcs extends JViewLegacy
 		}
 
 		TcHelpersTc::addSubmenu('usertcs');
+		// To get the foematted date
+						$comParams = ComponentHelper::getParams('com_tc');
+						$this->dateFormat = $comParams->get('date_format_show');
 
+					if ($dateFormat == "custom")
+						{
+							$this->dateFormat = $comParams->get('custom_format');
+						}
 		$this->addToolbar();
 
 		$this->sidebar = JHtmlSidebar::render();
