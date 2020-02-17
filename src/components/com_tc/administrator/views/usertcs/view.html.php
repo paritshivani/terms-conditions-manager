@@ -56,14 +56,16 @@ class TcViewUsertcs extends JViewLegacy
 		}
 
 		TcHelpersTc::addSubmenu('usertcs');
-		// To get the foematted date
-						$comParams = ComponentHelper::getParams('com_tc');
-						$this->dateFormat = $comParams->get('date_format_show');
 
-					if ($dateFormat == "custom")
-						{
-							$this->dateFormat = $comParams->get('custom_format');
-						}
+		// To get the foematted date
+		$comParams = ComponentHelper::getParams('com_tc');
+		$this->dateFormat = $comParams->get('date_format_show');
+
+		if ($dateFormat == "custom")
+		{
+			$this->dateFormat = $comParams->get('custom_format');
+		}
+
 		$this->addToolbar();
 
 		$this->sidebar = JHtmlSidebar::render();

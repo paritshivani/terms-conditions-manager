@@ -25,8 +25,8 @@ Joomla.submitbutton = function(action)
 	{
 		 if (action=='usertcs.delete')
 		{
-			var r=confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
-			if (r==true)
+			var confirmation=confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
+			if (confirmation==true)
 			{
 				Joomla.submitform(action);
 			}

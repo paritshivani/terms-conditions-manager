@@ -63,7 +63,8 @@ class TcViewContents extends JViewLegacy
 		}
 
 		TcHelpersTc::addSubmenu('contents');
-// To get the foematted date
+
+		// To get the foematted date
 		$comParams = ComponentHelper::getParams('com_tc');
 		$this->dateFormat = $comParams->get('date_format_show');
 
