@@ -55,7 +55,7 @@ $listDirn  = $this->state->get('list.direction');
 	<?php
 	if (empty($this->items)) : ?>
 		<div class="alert alert-no-items">
-			<?php echo JText::_('COM_TC_NO_MATCHING_RESULTS'); ?>
+			<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 				</div>
 	<?php
 	else : ?>
@@ -65,7 +65,7 @@ $listDirn  = $this->state->get('list.direction');
 				<tr>
 					<th width="1%" class="hidden-phone">
 						<input type="checkbox" name="checkall-toggle" value=""
-							   title="<?php echo JText::_('COM_TC_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)"/>
+							   title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)"/>
 					</th>
 					<th class='left'>
 					<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_NAME', 'uc.`name`', $listDirn, $listOrder); ?>

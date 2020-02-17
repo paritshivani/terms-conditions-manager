@@ -37,7 +37,7 @@ $listDirn  = $this->state->get('list.direction');
 	<?php
 	if (empty($this->items)) : ?>
 		<div class="alert alert-no-items">
-			<?php echo JText::_('COM_TC_NO_MATCHING_RESULTS'); ?>
+			<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 		</div>
 	<?php
 	else : ?>

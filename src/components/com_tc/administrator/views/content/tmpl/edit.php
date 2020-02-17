@@ -33,7 +33,7 @@ JHtml::_('behavior.formvalidator');
 				Joomla.submitform(task, document.getElementById('content-form'));
 			}
 			else {
-				alert('<?php echo $this->escape(JText::_('COM_TC_VALIDATION_FORM_FAILED')); ?>');
+				alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
 			}
 		}
 	}

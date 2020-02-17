@@ -12,15 +12,15 @@
   </fields>
   <fields name="list">
     <field name="fullordering" type="list" label="COM_CONTENT_LIST_FULL_ORDERING" description="COM_CONTENT_LIST_FULL_ORDERING_DESC" onchange="this.form.submit();" default="a.tc_id DESC">
-      <option value="">COM_TC_SORT_BY</option>
+      <option value="">JGLOBAL_SORT_BY</option>
       <option value="a.tc_id ASC">JGRID_HEADING_ID_ASC</option>
       <option value="a.tc_id DESC">JGRID_HEADING_ID_DESC</option>
       <option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
       <option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
       <option value="a.state ASC">JSTATUS_ASC</option>
       <option value="a.state DESC">JSTATUS_DESC</option>
-      <option value="a.title ASC">COM_TC_TITLE_ASC</option>
-      <option value="a.title DESC">COM_TC_TITLE_DESC</option>
+      <option value="a.title ASC">JGLOBAL_TITLE_ASC</option>
+      <option value="a.title DESC">JGLOBAL_TITLE_DESC</option>
       <option value="a.version ASC">COM_TC_CONTENTS_VERSION_ASC</option>
       <option value="a.version DESC">COM_TC_CONTENTS_VERSION_ASC</option>
       <option value="a.client ASC">COM_TC_CONTENTS_CLIENT_ASC</option>
