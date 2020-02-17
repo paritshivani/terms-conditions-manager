@@ -35,7 +35,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 							$dateFormat = $comParams->get('custom_format');
 						}
 
-						$this->date = HTMLHelper::_('date', $this->termsandconditions->modified_on, $dateFormat, true);
+						$this->modified_on = HTMLHelper::_('date', $this->termsandconditions->modified_on, $dateFormat, true);
 
 
 
@@ -44,7 +44,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
 				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->date; ?><strong>
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->modified_on; ?><strong>
 			</div>
 			<br>
 			<div class="">

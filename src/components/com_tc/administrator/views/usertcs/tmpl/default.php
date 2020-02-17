@@ -118,7 +118,7 @@ Joomla.submitbutton = function(action)
 							$dateFormat = $comParams->get('custom_format');
 						}
 
-						$this->date = HTMLHelper::_('date', $item->accepted_date, $dateFormat, true);
+						$this->accepted_date = HTMLHelper::_('date', $item->accepted_date, $dateFormat, true);
 
 
 					?>
@@ -139,7 +139,7 @@ Joomla.submitbutton = function(action)
 							<?php echo $item->version; ?>
 						</td>
 						<td>
-							<?php echo $this->date; ?>
+							<?php echo $this->accepted_date; ?>
 						</td>
 					</tr>
 				<?php
