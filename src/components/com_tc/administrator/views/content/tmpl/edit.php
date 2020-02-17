@@ -45,7 +45,7 @@ JHtml::_('behavior.formvalidator');
 
 			if (tc_id)
 			{
-				jQuery('#jform_version_id').attr('readonly', true);
+				jQuery('#jform_version').attr('readonly', true);
 				jQuery('#jform_client_id').attr('readonly', true);
 
 				return true;
@@ -61,8 +61,8 @@ JHtml::_('behavior.formvalidator');
 
 				if (value <= 0)
 				{
-					alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_ZERO_VERSION_TC')); ?>');
-					jQuery('#jform_version_id').val('');
+					alert('<?php echo $this->escape(JText::_('COM_TC_VALIDATION_FORM_ZERO_VERSION_TC')); ?>');
+					jQuery('#jform_version').val('');
 
 					return false;
 				}
@@ -90,7 +90,7 @@ JHtml::_('behavior.formvalidator');
 				return true;
 			}
 
-			var tcVersion = jQuery("#jform_version_id").val();
+			var tcVersion = jQuery("#jform_version").val();
 			var tcClient = jQuery("#jform_client_id").val();
 			var valid = false;
 
@@ -112,8 +112,9 @@ JHtml::_('behavior.formvalidator');
 							valid = true;
 						}
 						else if (tcVersion <= data) {
-							alert('<?php echo JText::_('JGLOBAL_VALIDATION_FORM_LATEST_VERSION_TC'); ?>' + data + '<?php echo JText::_('JGLOBAL_VALIDATION_FORM_GREATER_VERSION_TC'); ?>');
-							jQuery('#jform_version_id').val('');
+						alert('<?php echo JText::_('COM_TC_VALIDATION_FORM_LATEST_VERSION_TC', ); ?>'+ tcClient +' - '+ data +
+								'<?php echo JText::_('COM_TC_VALIDATION_FORM_GREATER_VERSION_TC'); ?>');
+							jQuery('#jform_version').val('');
 
 							valid = false;
 						}

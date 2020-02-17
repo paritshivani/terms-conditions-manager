@@ -28,8 +28,8 @@
       <option value="1">JYES</option>
       <option value="0">JNO</option>
     </field>
-    <field name="groups" type="usergrouplist" multiple="true" default="0" label="COM_TC_FORM_LBL_CONTENT_SELECT_USER_GROUP" description="COM_TC_FORM_LBL_CONTENT_SELECT_USER_GROUP_DESC" />
-    <field name="is_blacklist" type="radio" class="btn-group" label="COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR" description="COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR_DESC" default="1">
+    <field name="groups" type="usergrouplist" multiple="true" default="0" label="COM_TC_FORM_LBL_CONTENT_SELECT_USER_GROUP" description="COM_TC_FORM_LBL_CONTENT_SELECT_USER_GROUP_DESC" showon="global:0"/>
+    <field name="is_blacklist" type="radio" class="btn-group" label="COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR" description="COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR_DESC" default="1" showon="global:0">
       <option value="1">COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR_YES</option>
       <option value="0">COM_TC_FORM_LBL_CONTENT_USER_GROUP_BEHAVIOUR_NO</option>
     </field>
