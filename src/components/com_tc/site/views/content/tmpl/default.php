@@ -10,6 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
 use Joomla\CMS\HTML\HTMLHelper;
+use \Joomla\CMS\Component\ComponentHelper;
 ?>
 		<script>
 			function validateform(form)
@@ -30,6 +31,10 @@ use Joomla\CMS\HTML\HTMLHelper;
 		</script>
 		<?php if (!empty($this->tc_id))
 		{
+			// To get the foematted date
+						$comParams = ComponentHelper::getParams('com_tc');
+						$dateFormat = $comParams->get('date_format_show');
+
 			if ($dateFormat == "custom")
 						{
 							$dateFormat = $comParams->get('custom_format');
