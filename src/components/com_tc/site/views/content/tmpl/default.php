@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
 use Joomla\CMS\HTML\HTMLHelper;
-use \Joomla\CMS\Component\ComponentHelper;
+
 ?>
 		<script>
 			function validateform(form)
