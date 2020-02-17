@@ -81,6 +81,17 @@ $listDirn  = $this->state->get('list.direction');
 						$canEdit    = $this->user->authorise('core.edit', 'com_tc');
 						$canCheckin = $this->user->authorise('core.manage', 'com_tc');
 						$canChange  = $this->user->authorise('core.edit.state', 'com_tc');
+
+						// To get the foematted date
+						$comParams = JComponentHelper::getParams('com_tc');
+						$dateFormat = $comParams->get('date_format_show');
+
+						if ($dateFormat == "custom")
+						{
+							$dateFormat = $comParams->get('custom_format');
+						}
+
+						$this->date = HTMLHelper::_('date', $item->start_date, $dateFormat, true);
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td class="hidden-phone">
@@ -111,7 +122,7 @@ $listDirn  = $this->state->get('list.direction');
 								<?php echo $this->escape($item->client); ?>
 				</td>
 				<td>
-								<?php echo JHtml::date($item->start_date, 'Y-m-d H:i:s', true); ?>
+								<?php echo $this->date; ?>
 							</td>
 							<td>
 								<?php echo $item->tc_id; ?>

@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
+use Joomla\CMS\HTML\HTMLHelper;
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
@@ -19,6 +20,23 @@ $listOrder = $this->state->get('list.ordering');
 $listDirn  = $this->state->get('list.direction');
 ?>
 <script type="text/javascript">
+
+Joomla.submitbutton = function(action)
+	{
+		 if (action=='usertcs.delete')
+		{
+			var r=confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
+			if (r==true)
+			{
+				Joomla.submitform(action);
+			}
+			else
+			{
+				return;
+			}
+		}
+	};
+
 	Joomla.orderTable = function () {
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
@@ -93,7 +111,17 @@ $listDirn  = $this->state->get('list.direction');
 				</tfoot>
 				<tbody>
 				<?php
-				foreach ($this->items as $i => $item) : ?>
+				foreach ($this->items as $i => $item) :
+
+					if ($dateFormat == "custom")
+						{
+							$dateFormat = $comParams->get('custom_format');
+						}
+
+						$this->date = HTMLHelper::_('date', $item->accepted_date, $dateFormat, true);
+
+
+					?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td class="hidden-phone">
 							<?php echo JHtml::_('grid.id', $i, $item->tc_id); ?>
@@ -111,7 +139,7 @@ $listDirn  = $this->state->get('list.direction');
 							<?php echo $item->version; ?>
 						</td>
 						<td>
-							<?php echo $item->accepted_date; ?>
+							<?php echo $this->date; ?>
 						</td>
 					</tr>
 				<?php

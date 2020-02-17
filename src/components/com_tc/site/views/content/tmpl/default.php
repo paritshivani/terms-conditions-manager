@@ -8,6 +8,8 @@
  */
 
 defined('_JEXEC') or die('Restricted access');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
+use Joomla\CMS\HTML\HTMLHelper;
 ?>
 		<script>
 			function validateform(form)
@@ -27,12 +29,22 @@ defined('_JEXEC') or die('Restricted access');
 			}
 		</script>
 		<?php if (!empty($this->tc_id))
-		{?>
+		{
+			if ($dateFormat == "custom")
+						{
+							$dateFormat = $comParams->get('custom_format');
+						}
+
+						$this->date = HTMLHelper::_('date', $this->termsandconditions->modified_on, $dateFormat, true);
+
+
+
+			?>
 			<div class="well well-condensed">
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
 				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->termsandconditions->modified_on; ?></strong>
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . $this->date; ?><strong>
 			</div>
 			<br>
 			<div class="">

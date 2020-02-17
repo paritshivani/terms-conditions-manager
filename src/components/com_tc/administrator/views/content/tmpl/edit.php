@@ -45,7 +45,7 @@ JHtml::_('behavior.formvalidator');
 
 			if (tc_id)
 			{
-				jQuery('#jform_version_id').attr('readonly', true);
+				jQuery('#jform_version').attr('readonly', true);
 				jQuery('#jform_client_id').attr('readonly', true);
 
 				return true;
