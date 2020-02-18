@@ -23,10 +23,10 @@ $listDirn  = $this->state->get('list.direction');
 
 Joomla.submitbutton = function(action)
 	{
-		 if (action === 'usertcs.delete')
+		 if (action == 'usertcs.delete')
 		{
-			var confirmation=confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
-			if (confirmation==true)
+			var confirmation = confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
+			if (confirmation === true)
 			{
 				Joomla.submitform(action);
 			}
