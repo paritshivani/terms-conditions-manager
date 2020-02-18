@@ -51,6 +51,7 @@ class TcTableUsertcs extends JTable
 	 *
 	 * @return bool
 	 */
+	/**
 	public function delete($pk = null)
 	{
 		$this->load($pk);
@@ -58,7 +59,7 @@ class TcTableUsertcs extends JTable
 
 		return $result;
 	}
-
+	*/
 	/**
 	 * Method to load a row from the database by primary key and bind the fields to the JTable instance properties.
 	 *

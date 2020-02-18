@@ -198,6 +198,7 @@ class TcModelUsertcs extends JModelList
 	 *
 	 * @since   1.0.0
 	 */
+	/**
 	public function delete($cid)
 	{
 		$db = JFactory::getDbo();
@@ -228,7 +229,7 @@ class TcModelUsertcs extends JModelList
 
 		return true;
 	}
-
+	*/
 	/**
 	 * Method to save the user T&C acceptance entry.
 	 *
