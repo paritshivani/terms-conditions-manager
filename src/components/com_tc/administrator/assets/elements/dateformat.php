@@ -9,8 +9,8 @@
  */
 
 defined('_JEXEC') or die('Restricted access');
-jimport('joomla.form.formfield');
-jimport( 'joomla.html.html.select' );
+use Joomla\CMS\Form\FormField;
+use Joomla\CMS\HTML\HTMLHelper;
 /**
  * JFormFieldDateformat class
  *
@@ -34,7 +34,6 @@ class JFormFieldDateformat extends JFormField
 	 * @var   integer
 	 * @since 2.2
 	 */
-	protected $loadExternally = 0;
 
 	/**
 	 * Method to get the field input markup.
@@ -64,19 +63,14 @@ class JFormFieldDateformat extends JFormField
 	{
 		$sqlGmtTimestamp = "2012-01-01 20:00:00";
 
-		$dateFormat = array("Y-m-d H:i:s",
-							"D, M d h:i A", "F j, Y, g:i a", "m.d.y", "j, n, Y", "h-i-s, j-m-y", "H:i:s"
-							);
+		$dateFormat = array("Y-m-d H:i:s", "D, M d h:i A", "F j, Y, g:i a", "m.d.y", "j, n, Y", "h-i-s, j-m-y", "H:i:s");
 
 		foreach ($dateFormat as $date)
 		{
-			$options[] = JHTML::_('select.option', $date, JHtml::date(
-								$sqlGmtTimestamp, $date, true
-								)
-							);
+			$options[] = JHTML::_('select.option', $date, JHtml::date($sqlGmtTimestamp, $date, true));
 		}
 
-		$options[] = JHTML::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOME'));
+		$options[] = JHTML::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOM'));
 
 		return JHtml::_('select.genericlist',  $options, $name, 'class="inputbox"  ', 'value', 'text', $value, $control_name . $name);
 	}

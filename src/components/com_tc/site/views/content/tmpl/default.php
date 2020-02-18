@@ -36,13 +36,14 @@ use Joomla\CMS\HTML\HTMLHelper;
 			<div class="">
 				<h1><?php echo $this->termsandconditions->title; ?></h1>
 				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") . HTMLHelper::_('date', $this->termsandconditions->modified_on, $this->dateFormat, true); ?><strong>
+				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") .
+				HTMLHelper::_('date', $this->termsandconditions->modified_on, $this->dateFormat, true); ?></strong>
 			</div>
 			<br>
 			<div class="">
 				<?php
 						echo nl2br($this->termsandconditions->content);
-		 } ?>
+		} ?>
 			</div>
 <?php
 		$app        = JFactory::getApplication();
