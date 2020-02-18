@@ -18,7 +18,7 @@ use Joomla\CMS\HTML\HTMLHelper;
  * @subpackage  component
  * @since       1.0
  */
-class JFormFieldDateformat extends JFormField
+class JFormFieldDateformat extends FormField
 {
 	/**
 	 * The form field type.
