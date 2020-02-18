@@ -67,11 +67,11 @@ class JFormFieldDateformat extends FormField
 
 		foreach ($dateFormat as $date)
 		{
-			$options[] = JHTML::_('select.option', $date, JHtml::date($sqlGmtTimestamp, $date, true));
+			$options[] = HTML::_('select.option', $date, Html::date($sqlGmtTimestamp, $date, true));
 		}
 
-		$options[] = JHTML::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOM'));
+		$options[] = HTML::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOM'));
 
-		return JHtml::_('select.genericlist',  $options, $name, 'class="inputbox"  ', 'value', 'text', $value, $control_name . $name);
+		return Html::_('select.genericlist',  $options, $name, 'class="inputbox"  ', 'value', 'text', $value, $control_name . $name);
 	}
 }
