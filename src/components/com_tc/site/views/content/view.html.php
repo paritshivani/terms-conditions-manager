@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+use \Joomla\CMS\Component\ComponentHelper;
 
 /**
  * View to edit
@@ -37,6 +38,15 @@ class TcViewContent extends JViewLegacy
 		$this->user_id    = JFactory::getUser()->id;
 
 		JLoader::import('components.com_tc.models.content', JPATH_ADMINISTRATOR);
+
+		// To get the foematted date
+		$comParams = ComponentHelper::getParams('com_tc');
+		$this->dateFormat = $comParams->get('date_format_show');
+
+		if ($dateFormat == "custom")
+		{
+			$this->dateFormat = $comParams->get('custom_format');
+		}
 
 		// Call api to get user accepted version
 		$model  = JModelLegacy::getInstance('Content', 'TcModel');

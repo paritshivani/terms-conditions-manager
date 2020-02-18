@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Layout\LayoutHelper;
+
 HTMLHelper::_('behavior.tooltip');
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('formbehavior.chosen', 'select');
@@ -81,6 +82,8 @@ $listDirn  = $this->state->get('list.direction');
 						$canEdit    = $this->user->authorise('core.edit', 'com_tc');
 						$canCheckin = $this->user->authorise('core.manage', 'com_tc');
 						$canChange  = $this->user->authorise('core.edit.state', 'com_tc');
+
+						$startDate = HTMLHelper::_('date', $item->start_date, $this->dateFormat, true);
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td class="hidden-phone">
@@ -111,7 +114,7 @@ $listDirn  = $this->state->get('list.direction');
 								<?php echo $this->escape($item->client); ?>
 				</td>
 				<td>
-								<?php echo JHtml::date($item->start_date, 'Y-m-d H:i:s', true); ?>
+								<?php echo $startDate; ?>
 							</td>
 							<td>
 								<?php echo $item->tc_id; ?>
