@@ -16,7 +16,7 @@ use Joomla\CMS\HTML\HTMLHelper;
  *
  * @package     Tc
  * @subpackage  component
- * @since       1.0
+ * @since       1.1
  */
 class JFormFieldDateformat extends FormField
 {
@@ -24,7 +24,7 @@ class JFormFieldDateformat extends FormField
 	 * The form field type.
 	 *
 	 * @var   string
-	 * @since 1.6
+	 * @since 1.1
 	 */
 	protected $type = 'dateformat';
 
@@ -32,13 +32,13 @@ class JFormFieldDateformat extends FormField
 	 * Fiedd to decide if options are being loaded externally and from xml
 	 *
 	 * @var   integer
-	 * @since 2.2
+	 * @since 1.1
 	 */
 
 	/**
 	 * Method to get the field input markup.
 	 *
-	 * @since  1.6
+	 * @since  1.1
 	 *
 	 * @return   array  The field input markup
 	 */
@@ -57,7 +57,7 @@ class JFormFieldDateformat extends FormField
 	 *
 	 * @return  array  date format list
 	 *
-	 * @since   1.0
+	 * @since   1.1
 	 */
 	public function fetchElement ($name, $value, &$node, $control_name)
 	{
@@ -67,11 +67,11 @@ class JFormFieldDateformat extends FormField
 
 		foreach ($dateFormat as $date)
 		{
-			$options[] = HTML::_('select.option', $date, Html::date($sqlGmtTimestamp, $date, true));
+			$options[] = HTMLHelper::_('select.option', $date, HTMLHelper::date($sqlGmtTimestamp, $date, true));
 		}
 
-		$options[] = HTML::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOM'));
+		$options[] = HTMLHelper::_('select.option', 'custom', JText::_('COM_TC_DATE_FORMAT_CUSTOM'));
 
-		return Html::_('select.genericlist',  $options, $name, 'class="inputbox"  ', 'value', 'text', $value, $control_name . $name);
+		return HTMLHelper::_('select.genericlist',  $options, $name, 'class="inputbox"  ', 'value', 'text', $value, $control_name . $name);
 	}
 }
