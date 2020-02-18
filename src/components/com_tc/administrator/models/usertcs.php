@@ -198,36 +198,36 @@ class TcModelUsertcs extends JModelList
 	 *
 	 * @since   1.0.0
 	 */
-	public function delete($cid)
-	{
-		$db = JFactory::getDbo();
+	// public function delete($cid)
+	// {
+	// 	$db = JFactory::getDbo();
 
-		if (!empty($cid))
-		{
-			$group_to_delet = implode(',', $cid);
+	// 	if (!empty($cid))
+	// 	{
+	// 		$group_to_delet = implode(',', $cid);
 
-			$query = $db->getQuery(true);
+	// 		$query = $db->getQuery(true);
 
-			// Delete all orders as selected
-			$conditions = array(
-				$db->quoteName('tc_id') . ' IN ( ' . $group_to_delet . ' )',
-			);
+	// 		// Delete all orders as selected
+	// 		$conditions = array(
+	// 			$db->quoteName('tc_id') . ' IN ( ' . $group_to_delet . ' )',
+	// 		);
 
-			$query->delete($db->quoteName('#__tc_acceptance'));
-			$query->where($conditions);
+	// 		$query->delete($db->quoteName('#__tc_acceptance'));
+	// 		$query->where($conditions);
 
-			$db->setQuery($query);
+	// 		$db->setQuery($query);
 
-			if (!$db->execute())
-			{
-					$this->setError($this->_db->getErrorMsg());
+	// 		if (!$db->execute())
+	// 		{
+	// 				$this->setError($this->_db->getErrorMsg());
 
-					return false;
-			}
-		}
+	// 				return false;
+	// 		}
+	// 	}
 
-		return true;
-	}
+	// 	return true;
+	// }
 
 	/**
 	 * Method to save the user T&C acceptance entry.

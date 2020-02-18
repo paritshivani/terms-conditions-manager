@@ -82,7 +82,13 @@ class TcViewUsertcs extends JViewLegacy
 			if (isset($this->items[0]))
 			{
 				// If this component does not use state then show a direct delete button as we can not trash
-				JToolBarHelper::deleteList('', 'usertcs.delete', 'JTOOLBAR_DELETE');
+				//JToolBarHelper::deleteList('', 'usertcs.delete', 'JTOOLBAR_DELETE');
+
+					if ($canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('com_tc');
+		}
+
 			}
 		}
 	}
