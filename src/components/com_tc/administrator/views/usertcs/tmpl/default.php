@@ -20,23 +20,6 @@ $listOrder = $this->state->get('list.ordering');
 $listDirn  = $this->state->get('list.direction');
 ?>
 <script type="text/javascript">
-
-Joomla.submitbutton = function(action)
-	{
-		 if (action == 'usertcs.delete')
-		{
-			var confirmation = confirm("<?php echo JText::_('COM_TC_CONFIRM_DELETE_USERTCS');?>");
-			if (confirmation === true)
-			{
-				Joomla.submitform(action);
-			}
-			else
-			{
-				return;
-			}
-		}
-	};
-
 	Joomla.orderTable = function () {
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
