@@ -168,6 +168,7 @@ JHtml::_('behavior.formvalidator');
 					echo $this->form->renderField('client');
 					echo $this->form->renderField('version');
 					echo $this->form->renderField('start_date');
+					echo $this->form->renderField('global');
 					echo $this->form->renderField('url_pattern');
 					echo $this->form->renderField('content');
 					echo $this->form->renderField('email');
@@ -184,7 +185,6 @@ JHtml::_('behavior.formvalidator');
 				<?php
 					echo $this->form->renderField('groups');
 					echo $this->form->renderField('is_blacklist');
-					echo $this->form->renderField('global');
 					// echo $this->form->renderField('enforce_delay_days');
 				?>
 				</fieldset>
