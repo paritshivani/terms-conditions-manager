@@ -64,10 +64,6 @@ $listDirn  = $this->state->get('list.direction');
 	<table class="table table-striped" id="contentList">
 		<thead>
 			<tr>
-				<th width="1%" class="hidden-phone">
-					<input type="checkbox" name="checkall-toggle" value=""
-						   title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)"/>
-				</th>
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_NAME', 'uc.`name`', $listDirn, $listOrder); ?>
 				</th>
@@ -99,9 +95,6 @@ $listDirn  = $this->state->get('list.direction');
 					$acceptedDate = HTMLHelper::_('date', $item->accepted_date, $this->dateFormat, true);
 				?>
 				<tr class="row<?php echo $i % 2; ?>">
-					<td class="hidden-phone">
-						<?php echo JHtml::_('grid.id', $i, $item->tc_id); ?>
-					</td>
 					<td>
 						<?php echo $this->escape($item->name); ?>
 					</td>
@@ -125,7 +118,6 @@ $listDirn  = $this->state->get('list.direction');
 	<?php
 	endif; ?>
 			<input type="hidden" name="task" value=""/>
-			<input type="hidden" name="boxchecked" value="0"/>
 			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
 			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
