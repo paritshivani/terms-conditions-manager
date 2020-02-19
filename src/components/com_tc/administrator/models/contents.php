@@ -131,7 +131,7 @@ class TcModelContents extends JModelList
 		$query->from($db->quoteName('#__tc_content', 'a'));
 
 		// Join over the users for the checked out user
-		$query->select($db->quoteName('uc.name','editor'));
+		$query->select($db->quoteName('uc.name', 'editor'));
 		$query->join("LEFT", $db->quoteName('#__users', 'uc') . 'ON (' . $db->quoteName('uc.id') . ' = ' .
 		$db->quoteName('a.checked_out') . ')');
 
