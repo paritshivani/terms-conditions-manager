@@ -43,7 +43,7 @@ class TcViewContent extends JViewLegacy
 		$comParams = ComponentHelper::getParams('com_tc');
 		$this->dateFormat = $comParams->get('date_format_show');
 
-		if ($dateFormat == "custom")
+		if ($this->dateFormat == "custom")
 		{
 			$this->dateFormat = $comParams->get('custom_format');
 		}
