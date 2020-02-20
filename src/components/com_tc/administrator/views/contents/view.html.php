@@ -48,6 +48,7 @@ class TcViewContents extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+
 		$this->state = $this->get('State');
 		$this->items = $this->get('Items');
 		$this->user  = Factory::getUser();
@@ -68,7 +69,7 @@ class TcViewContents extends JViewLegacy
 		$comParams = ComponentHelper::getParams('com_tc');
 		$this->dateFormat = $comParams->get('date_format_show');
 
-		if ($dateFormat == "custom")
+		if ($this->dateFormat == "custom")
 		{
 			$this->dateFormat = $comParams->get('custom_format');
 		}
