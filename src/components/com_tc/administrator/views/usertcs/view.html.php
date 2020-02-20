@@ -27,7 +27,7 @@ class TcViewUsertcs extends JViewLegacy
 
 	public $filterForm;
 
-	protected $activeFilters;
+	public $activeFilters;
 
 	protected $component;
 
@@ -61,7 +61,7 @@ class TcViewUsertcs extends JViewLegacy
 		$comParams = ComponentHelper::getParams('com_tc');
 		$this->dateFormat = $comParams->get('date_format_show');
 
-		if ($dateFormat == "custom")
+		if ($this->dateFormat == "custom")
 		{
 			$this->dateFormat = $comParams->get('custom_format');
 		}
