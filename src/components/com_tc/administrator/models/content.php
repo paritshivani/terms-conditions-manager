@@ -290,7 +290,8 @@ class TcModelContent extends JModelAdmin
 		$query->select('p.tc_id, c.version, c.client');
 		$query->from($db->quoteName('#__tc_patterns', 'p'));
 		$query->join('LEFT', $db->quoteName('#__tc_content', 'c') . ' ON (' . $db->quoteName('c.tc_id') . ' = ' . $db->quoteName('p.tc_id') . ')');
-		$query->where($db->quoteName('c.global') . " = " . $db->quote(1));
+		$query->where($db->quoteName('p.option') . " = " . $db->quote($option));
+		$query->where($db->quoteName('p.view') . " = " . $db->quote($view));
 		$query->where($db->quoteName('c.start_date') . " <= UTC_TIMESTAMP()");
 		$query->where($db->quoteName('c.state') . " = " . $db->quote(1));
 
@@ -301,9 +302,9 @@ class TcModelContent extends JModelAdmin
 		$db->setQuery($query);
 
 		// Returns an associated array, it will give result with highest version number first for every client
-		$globalTCIdList = $db->loadObjectList('client');
+		$getMatchingTCIdList = $db->loadObjectList('client');
 
-		return $globalTCIdList;
+		return $getMatchingTCIdList;
 	}
 
 	/**
@@ -469,15 +470,13 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getGlobalTCIdList()
 	{
-		$today = JHtml::date('now', 'Y-m-d H:i:s', true);
-
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('p.tc_id, c.version, c.client');
 		$query->from($db->quoteName('#__tc_patterns', 'p'));
 		$query->join('LEFT', $db->quoteName('#__tc_content', 'c') . ' ON (' . $db->quoteName('c.tc_id') . ' = ' . $db->quoteName('p.tc_id') . ')');
 		$query->where($db->quoteName('c.global') . " = " . $db->quote(1));
-		$query->where($db->quoteName('c.start_date') . " <= " . $db->quote($today));
+		$query->where($db->quoteName('c.start_date') . " <= UTC_TIMESTAMP()");
 		$query->where($db->quoteName('c.state') . " = " . $db->quote(1));
 
 		// Order in ascending, so get latest version of T&C
