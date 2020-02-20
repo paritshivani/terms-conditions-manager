@@ -25,7 +25,7 @@
       <option value="a.version DESC">COM_TC_CONTENTS_VERSION_DES</option>
       <option value="a.client ASC">COM_TC_CONTENTS_TC_CODE_ASC</option>
       <option value="a.client DESC">COM_TC_CONTENTS_TC_CODE_DES</option>
-      <option value="a.start_date DESC">COM_TC_CONTENTS_STARTDATE_ASC</option>
+      <option value="a.start_date ASC">COM_TC_CONTENTS_STARTDATE_ASC</option>
       <option value="a.start_date DESC">COM_TC_CONTENTS_STARTDATE_DES</option>
     </field>
     <field name="limit" type="limitbox" class="input-mini" default="25" onchange="this.form.submit();" />
