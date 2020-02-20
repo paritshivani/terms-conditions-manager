@@ -480,7 +480,7 @@ class TcModelContent extends JModelAdmin
 		$query->from($db->quoteName('#__tc_patterns', 'p'));
 		$query->join('LEFT', $db->quoteName('#__tc_content', 'c') . ' ON (' . $db->quoteName('c.tc_id') . ' = ' . $db->quoteName('p.tc_id') . ')');
 		$query->where($db->quoteName('c.global') . " = " . $db->quote(1));
-		$query->where($db->quoteName('c.start_date') . " < " . $db->quote($today));
+		$query->where($db->quoteName('c.start_date') . " <= " . $db->quote($today));
 		$query->where($db->quoteName('c.state') . " = " . $db->quote(1));
 
 		// Order in ascending, so get latest version of T&C
