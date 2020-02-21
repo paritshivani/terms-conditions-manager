@@ -175,6 +175,10 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function save($data)
 	{
+		if(!$this->validator($data))
+		{
+			return false;
+		}
 		require_once JPATH_ADMINISTRATOR . '/components/com_tc/models/urlpattern.php';
 		parent::save($data);
 		$db   = JFactory::getDBO();
@@ -572,6 +576,28 @@ class TcModelContent extends JModelAdmin
 			else
 			{
 				return false;
+			}
+		}
+	}
+	public function validator($data)
+	{
+		$url_pattern = $data['url_pattern'];
+		$global = $data['global'];
+
+		foreach ($url_pattern as $pattern)
+		{
+			$option = $pattern['option'];
+			$view = $pattern['view'];
+
+			if($global == 0 && !empty($option) && !empty($view))
+			{
+				return true;
+			}elseif($global == 0){
+$this->setError(JText::_('COM_TC_ENTER_URL_PATTERN'));
+
+				return false;
+			}else{
+				return true;
 			}
 		}
 	}
