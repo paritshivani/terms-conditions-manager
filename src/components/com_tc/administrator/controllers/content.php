@@ -10,6 +10,8 @@
 // No direct access
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
 jimport('joomla.application.component.controllerform');
 
@@ -81,12 +83,12 @@ class TcControllerContent extends JControllerForm
 		$form = $model->getForm($data);
 		$tc_id = $data['tc_id'];
 		$data = $model->validate($form, $data);
-		$msg = JText::_('COM_TC_SAVED_SUCCESSFULLY');
+		$msg = Text::_('COM_TC_SAVED_SUCCESSFULLY');
 		// Check for errors.
 		if ($data === false)
 		{
-			$app->enqueueMessage(JText::_('COM_TC_ENTER_URL_PATTERN', 'error'));
-			$this->setRedirect(JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
+			$app->enqueueMessage(Text::_('COM_TC_ENTER_URL_PATTERN', 'error'));
+			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
 		}
@@ -95,8 +97,8 @@ class TcControllerContent extends JControllerForm
 
 		if (!$result)
 		{
-			$app->enqueueMessage(JText::_('COM_TC_INVALID_DATA', 'error'));
-			$this->setRedirect(JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
+			$app->enqueueMessage(Text::_('COM_TC_INVALID_DATA', 'error'));
+			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
 
@@ -106,19 +108,19 @@ class TcControllerContent extends JControllerForm
 		{
 			case 'apply':
 				// Redirect back to the edit screen.
-			$redirect = JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false);
+			$redirect = Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false);
 				$app->redirect($redirect, $msg);
 					break;
 			case 'save2new':
 
 				// Redirect back to the edit screen.
-				$redirect = JRoute::_('index.php?option=com_tc&view=content&layout=edit', false);
+				$redirect = Route::_('index.php?option=com_tc&view=content&layout=edit', false);
 				$app->redirect($redirect, $msg);
 					break;
 
 				default:
 				// Redirect to the list screen.
-				$redirect = JRoute::_('index.php?option=com_tc&view=contents', false);
+				$redirect = Route::_('index.php?option=com_tc&view=contents', false);
 				$app->redirect($redirect, $msg);
 					break;
 		}
