@@ -107,12 +107,12 @@ JHtml::_('behavior.formvalidator');
 					}
 				).done(
 					function(data) {
-						if (data == 1) {
+						if (data === 0) {
 							// this T&C has first version
 							valid = true;
 						}
 						else if (tcVersion <= data) {
-						alert('<?php echo JText::_('COM_TC_VALIDATION_FORM_LATEST_VERSION_TC', ); ?>'+ tcClient +' - '+ data +
+						alert('<?php echo JText::_('COM_TC_VALIDATION_FORM_LATEST_VERSION_TC'); ?>'+ tcClient +' - '+ data +
 								'<?php echo JText::_('COM_TC_VALIDATION_FORM_GREATER_VERSION_TC'); ?>');
 							jQuery('#jform_version').val('');
 
