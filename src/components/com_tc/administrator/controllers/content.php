@@ -79,15 +79,20 @@ class TcControllerContent extends JControllerForm
 		$input = Factory::getApplication()->input;
 		$task = $input->get('task');
 		$data = $input->post->get('jform', '', 'ARRAY');
+		$all_jform_data = $data;
 		$model = $this->getModel('content');
 		$form = $model->getForm($data);
 		$tc_id = $data['tc_id'];
 		$data = $model->validate($form, $data);
 		$msg = Text::_('COM_TC_SAVED_SUCCESSFULLY');
+
 		// Check for errors.
 		if ($data === false)
 		{
 			$app->enqueueMessage(Text::_('COM_TC_ENTER_URL_PATTERN'), 'error');
+			$app->setUserState('com_tc.edit.content.data', $all_jform_data);
+			$app->setUserState('com_tc.edit.content.id', $all_jform_data['id']);
+
 			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
