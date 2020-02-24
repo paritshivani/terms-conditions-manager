@@ -9,6 +9,7 @@
 
 // No direct access
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
 
 jimport('joomla.application.component.controllerform');
 
@@ -39,7 +40,7 @@ class TcControllerContent extends JControllerForm
 	 */
 	public function checkDuplicateAndLatestVersionTC()
 	{
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Get value
 		$tcVersion = $app->input->post->getFloat('tcVersion', 0.0);
@@ -68,12 +69,12 @@ class TcControllerContent extends JControllerForm
 		* @param   string  $key     key
 		* @param   string  $urlVar  urlVar
 		*
-		* @return  void
+		* @return  boolean|void
 		*/
 	public function save($key = null, $urlVar = null)
 	{
-		$app = JFactory::getApplication();
-		$input = JFactory::getApplication()->input;
+		$app = Factory::getApplication();
+		$input = Factory::getApplication()->input;
 		$task = $input->get('task');
 		$data = $input->post->get('jform', '', 'ARRAY');
 		$model = $this->getModel('content');
