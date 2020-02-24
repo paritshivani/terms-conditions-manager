@@ -604,6 +604,6 @@ class TcModelContent extends JModelAdmin
 			}
 		}
 
-				return parent::validate($form, $data, $group);
+		return parent::validate($form, $data, $group);
 	}
 }
