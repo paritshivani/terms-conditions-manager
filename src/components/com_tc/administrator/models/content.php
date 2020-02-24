@@ -175,10 +175,6 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function save($data)
 	{
-		if(!$this->validator($data))
-		{
-			return false;
-		}
 		require_once JPATH_ADMINISTRATOR . '/components/com_tc/models/urlpattern.php';
 		parent::save($data);
 		$db   = JFactory::getDBO();
@@ -579,7 +575,19 @@ class TcModelContent extends JModelAdmin
 			}
 		}
 	}
-	public function validator($data)
+
+	/**
+	 * Loads ContentHelper for filters before validating data.
+	 *
+	 * @param   object  $form   The form to validate against.
+	 * @param   array   $data   The data to validate.
+	 * @param   string  $group  The name of the group(defaults to null).
+	 *
+	 * @return  mixed  Array of filtered data if valid, false otherwise.
+	 *
+	 * @since   1.1
+	 */
+	public function validate($form, $data, $group=null)
 	{
 		$url_pattern = $data['url_pattern'];
 		$global = $data['global'];
@@ -589,16 +597,12 @@ class TcModelContent extends JModelAdmin
 			$option = $pattern['option'];
 			$view = $pattern['view'];
 
-			if($global == 0 && !empty($option) && !empty($view))
+			if ($global == 0 && (empty($option) || empty($view)))
 			{
-				return true;
-			}elseif($global == 0){
-$this->setError(JText::_('COM_TC_ENTER_URL_PATTERN'));
-
 				return false;
-			}else{
-				return true;
 			}
 		}
+
+				return parent::validate($form, $data, $group);
 	}
 }

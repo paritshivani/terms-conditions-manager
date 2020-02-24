@@ -61,4 +61,65 @@ class TcControllerContent extends JControllerForm
 
 		jexit();
 	}
+
+	/**
+		* Function to save field data
+		*
+		* @param   string  $key     key
+		* @param   string  $urlVar  urlVar
+		*
+		* @return  void
+		*/
+	public function save($key = null, $urlVar = null)
+	{
+		$app = JFactory::getApplication();
+		$input = JFactory::getApplication()->input;
+		$task = $input->get('task');
+		$data = $input->post->get('jform', '', 'ARRAY');
+		$model = $this->getModel('content');
+		$form = $model->getForm($data);
+		$tc_id = $data['tc_id'];
+		$data = $model->validate($form, $data);
+		$msg = JText::_('COM_TC_SAVED_SUCCESSFULLY');
+		// Check for errors.
+		if ($data === false)
+		{
+			$app->enqueueMessage(JText::_('COM_TC_ENTER_URL_PATTERN', 'error'));
+			$this->setRedirect(JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
+
+			return false;
+		}
+
+		$result = $model->save($data);
+
+		if (!$result)
+		{
+			$app->enqueueMessage(JText::_('COM_TC_INVALID_DATA', 'error'));
+			$this->setRedirect(JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
+
+			return false;
+
+		}
+
+		switch ($task)
+		{
+			case 'apply':
+				// Redirect back to the edit screen.
+			$redirect = JRoute::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false);
+				$app->redirect($redirect, $msg);
+					break;
+			case 'save2new':
+
+				// Redirect back to the edit screen.
+				$redirect = JRoute::_('index.php?option=com_tc&view=content&layout=edit', false);
+				$app->redirect($redirect, $msg);
+					break;
+
+				default:
+				// Redirect to the list screen.
+				$redirect = JRoute::_('index.php?option=com_tc&view=contents', false);
+				$app->redirect($redirect, $msg);
+					break;
+		}
+	}
 }
