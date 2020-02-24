@@ -87,7 +87,7 @@ class TcControllerContent extends JControllerForm
 		// Check for errors.
 		if ($data === false)
 		{
-			$app->enqueueMessage(Text::_('COM_TC_ENTER_URL_PATTERN', 'error'));
+			$app->enqueueMessage(Text::_('COM_TC_ENTER_URL_PATTERN'), 'error');
 			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
@@ -97,7 +97,7 @@ class TcControllerContent extends JControllerForm
 
 		if (!$result)
 		{
-			$app->enqueueMessage(Text::_('COM_TC_INVALID_DATA', 'error'));
+			$app->enqueueMessage(Text::_('COM_TC_INVALID_DATA'), 'error');
 			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
