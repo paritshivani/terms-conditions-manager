@@ -38,7 +38,7 @@ class Pkg_TcInstallerScript extends TJInstaller
 		// Plugins => { (folder) => { (element) => (published) }* }*
 		'plugins' => array(
 			'system' => array(
-				'plug_system_tc' => 1
+				'tc' => 1
 			)
 		)
 		)

@@ -20,7 +20,7 @@
     <!-- Component -->
     <file type="component" id="com_tc">components/com_tc.zip</file>
     <!-- Plugins -->
-    <file type="plugin" id="plug_system_tc" group="system">plugins/system/plug_system_tc.zip</file>
+    <file type="plugin" id="tc" group="system">plugins/system/tc.zip</file>
   </files>
   <updateservers>
     <server type="collection" priority="1" name="tc"><![CDATA[https://techjoomla.com/updates/stream/tc.xml?format=xml]]></server>
