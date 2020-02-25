@@ -31,8 +31,6 @@ class TcModelUsertcs extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'tc_id', 'a.`tc_id`',
-				'user_id', 'a.`user_id`',
 				'name', 'uc.`name`',
 				'title', 'c.`title`',
 				'client', 'c.`client`',
@@ -55,7 +53,7 @@ class TcModelUsertcs extends JModelList
 	 *
 	 * @throws Exception
 	 */
-	protected function populateState($ordering = null, $direction = null)
+	protected function populateState($ordering = 'c.title', $direction = 'asc')
 	{
 		// Initialise variables.
 		$app = JFactory::getApplication('administrator');
@@ -72,7 +70,7 @@ class TcModelUsertcs extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('c.title', 'asc');
+		parent::populateState($ordering, $direction);
 	}
 
 	/**

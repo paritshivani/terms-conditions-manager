@@ -65,19 +65,19 @@ $listDirn  = $this->state->get('list.direction');
 		<thead>
 			<tr>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_NAME', 'uc.`name`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_TC_USERTCS_NAME', 'uc.`name`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_TITLE', 'c.`title`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_TC_USERTCS_TITLE', 'c.`title`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_TC_CODE', 'c.`client`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_TC_USERTCS_TC_CODE', 'c.`client`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TC_CONTENTS_VERSION', 'c.`version`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_TC_CONTENTS_VERSION', 'c.`version`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_TC_USERTCS_ACCEPTED_DATE', 'a.`accepted_date`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_TC_USERTCS_ACCEPTED_DATE', 'a.`accepted_date`', $listDirn, $listOrder); ?>
 				</th>
 			</tr>
 		</thead>
@@ -118,8 +118,6 @@ $listDirn  = $this->state->get('list.direction');
 	<?php
 	endif; ?>
 			<input type="hidden" name="task" value=""/>
-			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
 		</div>
 </form>
