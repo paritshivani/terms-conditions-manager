@@ -15,8 +15,6 @@ jimport('joomla.application.application');
 jimport('joomla.html.parameter');
 jimport('joomla.plugin.plugin');
 
-$lang = JFactory::getLanguage();
-$lang->load('plug_system_tc', JPATH_ADMINISTRATOR);
 /**
  * Methods supporting a list of Tjlms action.
  *
@@ -26,6 +24,13 @@ class PlgSystemplug_System_Tc extends JPlugin
 {
 	public $app;
 
+	/**
+	 * Load plugin language file automatically so that it can be used inside component
+	 *
+	 * @var    boolean
+	 * @since  2.3.4
+	 */
+	protected $autoloadLanguage = true;
 	/**
 	 * Method to handle an error condition.
 	 *
