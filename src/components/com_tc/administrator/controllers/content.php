@@ -52,7 +52,7 @@ class TcControllerContent extends JControllerForm
 		if ($getMaxTCVersion == 'newVersion')
 		{
 			// If T&C is first new version[new TC]
-			echo 1;
+			echo 0;
 		}
 		else
 		{
