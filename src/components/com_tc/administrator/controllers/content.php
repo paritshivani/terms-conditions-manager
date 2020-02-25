@@ -110,6 +110,7 @@ class TcControllerContent extends JControllerForm
 		switch ($task)
 		{
 			case 'apply':
+			$app->setUserState('com_tc.edit.content.data', $data);
 				// Redirect back to the edit screen.
 			$redirect = Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false);
 				$app->redirect($redirect, $msg);
