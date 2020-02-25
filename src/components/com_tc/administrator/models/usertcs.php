@@ -35,7 +35,7 @@ class TcModelUsertcs extends JModelList
 				'title', 'c.`title`',
 				'client', 'c.`client`',
 				'accepted_date', 'a.`accepted_date`',
-				'version', 'a.`version`'
+				'version', 'c.`version`'
 			);
 		}
 
