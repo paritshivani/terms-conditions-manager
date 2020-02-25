@@ -16,7 +16,7 @@ jimport('joomla.html.parameter');
 jimport('joomla.plugin.plugin');
 
 $lang = JFactory::getLanguage();
-$lang->load('plug_system_tc', dirname(__FILE__));
+$lang->load('plug_system_tc', JPATH_ADMINISTRATOR);
 /**
  * Methods supporting a list of Tjlms action.
  *
