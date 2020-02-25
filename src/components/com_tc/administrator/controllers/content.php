@@ -91,7 +91,6 @@ class TcControllerContent extends JControllerForm
 		{
 			$app->enqueueMessage(Text::_('COM_TC_ENTER_URL_PATTERN'), 'error');
 			$app->setUserState('com_tc.edit.content.data', $all_jform_data);
-			$app->setUserState('com_tc.edit.content.id', $all_jform_data['id']);
 			$this->setRedirect(Route::_('index.php?option=com_tc&view=content&layout=edit&tc_id=' . $tc_id, false));
 
 			return false;
@@ -116,13 +115,14 @@ class TcControllerContent extends JControllerForm
 				$app->redirect($redirect, $msg);
 					break;
 			case 'save2new':
-
+				$app->setUserState('com_tc.edit.content.data', null);
 				// Redirect back to the edit screen.
 				$redirect = Route::_('index.php?option=com_tc&view=content&layout=edit', false);
 				$app->redirect($redirect, $msg);
 					break;
 
 				default:
+				$app->setUserState('com_tc.edit.content.data', null);
 				// Redirect to the list screen.
 				$redirect = Route::_('index.php?option=com_tc&view=contents', false);
 				$app->redirect($redirect, $msg);
