@@ -20,10 +20,17 @@ jimport('joomla.plugin.plugin');
  *
  * @since  1.0.0
  */
-class PlgSystemplug_System_Tc extends JPlugin
+class PlgSystemTc extends JPlugin
 {
 	public $app;
 
+	/**
+	 * Load plugin language file automatically so that it can be used inside component
+	 *
+	 * @var    boolean
+	 * @since  2.3.4
+	 */
+	protected $autoloadLanguage = true;
 	/**
 	 * Method to handle an error condition.
 	 *
@@ -94,7 +101,7 @@ class PlgSystemplug_System_Tc extends JPlugin
 						$tc_url = 'index.php?option=com_tc&view=content&tc_id=';
 
 						// Redirect to Terms and condtitions view
-						$this->app->redirect(JRoute::_(JURI::root() . $tc_url . $getGlobalTCAcceptIdList[$i]->tc_id . '&return=' . $url, false), JText::_('PLUG_SYSTEM_TC_TERMS_AND_CONDITIONS_MSG'), 'Notice');
+						$this->app->redirect(JRoute::_(JURI::root() . $tc_url . $getGlobalTCAcceptIdList[$i]->tc_id . '&return=' . $url, false), JText::_('PLG_SYSTEM_TC_TERMS_AND_CONDITIONS_MSG'), 'Notice');
 					}
 				}
 			}
