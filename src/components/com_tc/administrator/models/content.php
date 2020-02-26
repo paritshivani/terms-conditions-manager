@@ -172,7 +172,7 @@ class TcModelContent extends JModelAdmin
 	 *
 	 * @param   array  $data  TC form data
 	 *
-	 * @return void
+	 * @return boolean|void
 	 */
 	public function save($data)
 	{
@@ -180,7 +180,6 @@ class TcModelContent extends JModelAdmin
 		parent::save($data);
 		$db   = Factory::getDBO();
 		$table = $this->getTable();
-		$key = $table->getKeyName();
 		$tcId   = (int) $this->getState($this->getName() . '.id');
 		$client = $data['client'];
 		$url_pattern = $data['url_pattern'];

@@ -73,7 +73,7 @@ class TcControllerContent extends JControllerForm
 	 *
 	 * @return  boolean|void
 	 */
-	public function save($key = null, $urlVar = null)
+	public function save($key = null, $urlVar = 'tc_id')
 	{
 		// Initialise variables.
 		$app   = Factory::getApplication();
@@ -82,8 +82,6 @@ class TcControllerContent extends JControllerForm
 		$data = $input->post->get('jform', array(), 'array');
 		$model = $this->getModel('content');
 		$form = $model->getForm($data, false);
-		$recordId = $data['tc_id'];
-		$msg = Text::_('COM_TC_MSG_SUCCESS_SAVE_CONTENT');
 		$table = $model->getTable();
 		$checkin = property_exists($table, $table->getColumnAlias('checked_out'));
 
