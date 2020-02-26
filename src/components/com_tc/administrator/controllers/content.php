@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri;
 
 jimport('joomla.application.component.controllerform');
 
@@ -164,7 +165,7 @@ class TcControllerContent extends JControllerForm
 			$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_CHECKIN_FAILED', $model->getError()));
 			$this->setMessage($this->getError(), 'error');
 
-			$this->setRedirect(Route::_('index.php?option=com_tc&view=content' . $this->getRedirectToItemAppend($recordId, $urlVar), false));
+			$this->setRedirect(Route::_('index.php?option=com_tc&view=content' . $this->getRedirectToItemAppend($recordId, $urlVar)));
 
 			return false;
 		}

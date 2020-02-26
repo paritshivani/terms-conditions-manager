@@ -179,7 +179,6 @@ class TcModelContent extends JModelAdmin
 		require_once JPATH_ADMINISTRATOR . '/components/com_tc/models/urlpattern.php';
 		parent::save($data);
 		$db   = Factory::getDBO();
-		$table = $this->getTable();
 		$tcId   = (int) $this->getState($this->getName() . '.id');
 		$client = $data['client'];
 		$url_pattern = $data['url_pattern'];
