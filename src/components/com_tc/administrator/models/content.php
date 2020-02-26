@@ -9,6 +9,7 @@
 
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
 
 jimport('joomla.application.component.modeladmin');
 
@@ -66,7 +67,7 @@ class TcModelContent extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Initialise variables.
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Get the form.
 		$form = $this->loadForm(
@@ -94,7 +95,7 @@ class TcModelContent extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_tc.edit.content.data', array());
+		$data = Factory::getApplication()->getUserState('com_tc.edit.content.data', array());
 
 		if (empty($data))
 		{
@@ -158,7 +159,7 @@ class TcModelContent extends JModelAdmin
 			// Set ordering to the last item if not set
 			if (@$table->ordering === '')
 			{
-				$db = JFactory::getDbo();
+				$db = Factory::getDbo();
 				$db->setQuery('SELECT MAX(ordering) FROM #__tc_content');
 				$max             = $db->loadResult();
 				$table->ordering = $max + 1;
@@ -171,18 +172,16 @@ class TcModelContent extends JModelAdmin
 	 *
 	 * @param   array  $data  TC form data
 	 *
-	 * @return void
+	 * @return boolean|void
 	 */
 	public function save($data)
 	{
 		require_once JPATH_ADMINISTRATOR . '/components/com_tc/models/urlpattern.php';
 		parent::save($data);
-		$db   = JFactory::getDBO();
-		$table = $this->getTable();
-		$key = $table->getKeyName();
-		$tcId = (!empty($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
+		$tcId   = (int) $this->getState($this->getName() . '.id');
 		$client = $data['client'];
 		$url_pattern = $data['url_pattern'];
+		$isNew = true;
 
 		// Delete existing url patterns
 		$urlPatternModel = JModelLegacy::getInstance('urlpattern', 'TcModel');
@@ -222,6 +221,9 @@ class TcModelContent extends JModelAdmin
 			}
 		}
 
+		$this->setState('com_tc.edit.content.id', $tcId);
+		$this->setState('com_tc.edit.content.new', $isNew);
+
 		return true;
 	}
 
@@ -239,7 +241,7 @@ class TcModelContent extends JModelAdmin
 	{
 		if ($tcVersion && $tcClient)
 		{
-			$db = JFactory::getDbo();
+			$db = Factory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('version');
 			$query->from($db->quoteName('#__tc_content'));
@@ -285,7 +287,7 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getMatchingTCs($option, $view)
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('p.tc_id, c.version, c.client');
 		$query->from($db->quoteName('#__tc_patterns', 'p'));
@@ -320,7 +322,7 @@ class TcModelContent extends JModelAdmin
 	public function hasUserAcceptedTC($loggedInUserId, $tcId)
 	{
 		// Get user accepted TC ids
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('c.tc_id');
 		$query->from($db->quoteName('#__tc_content', 'c'));
@@ -374,7 +376,7 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getTCValidationStatus($tcId)
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('global,groups,is_blacklist');
 		$query->from($db->quoteName('#__tc_content'));
@@ -416,9 +418,9 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function checkUserGroupAccess($tcUserGroup,$isBlacklist)
 	{
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		$loggedInUserId = $user->get('id');
-		$userGroups = JFactory::getUser($loggedInUserId);
+		$userGroups = Factory::getUser($loggedInUserId);
 
 		if ($loggedInUserId)
 		{
@@ -470,7 +472,7 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getGlobalTCIdList()
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('p.tc_id, c.version, c.client');
 		$query->from($db->quoteName('#__tc_patterns', 'p'));
@@ -502,7 +504,7 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getGlobalTCValidationStatus($tcId)
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('groups,is_blacklist');
 		$query->from($db->quoteName('#__tc_content'));
@@ -535,7 +537,7 @@ class TcModelContent extends JModelAdmin
 	 */
 	public function getTCClient($tcId)
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('client');
 		$query->from($db->quoteName('#__tc_content'));
@@ -574,5 +576,37 @@ class TcModelContent extends JModelAdmin
 				return false;
 			}
 		}
+	}
+
+	/**
+	 * Loads ContentHelper for filters before validating data.
+	 *
+	 * @param   object  $form   The form to validate against.
+	 * @param   array   $data   The data to validate.
+	 * @param   string  $group  The name of the group(defaults to null).
+	 *
+	 * @return  mixed  Array of filtered data if valid, false otherwise.
+	 *
+	 * @since   1.1
+	 */
+	public function validate($form, $data, $group=null)
+	{
+		$url_pattern = $data['url_pattern'];
+		$global = $data['global'];
+
+		foreach ($url_pattern as $pattern)
+		{
+			$option = $pattern['option'];
+			$view = $pattern['view'];
+
+			if ($global == 0 && (empty($option) || empty($view)))
+			{
+				$this->setError(JText::_('COM_TC_ENTER_URL_PATTERN'));
+
+				return false;
+			}
+		}
+
+		return parent::validate($form, $data, $group);
 	}
 }

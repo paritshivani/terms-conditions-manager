@@ -40,6 +40,10 @@ JHtml::_('behavior.formvalidator');
 
 	jQuery(document).ready(function(){
 
+		if(jQuery('label[for="jform_global_id0"]').hasClass("active")==true){
+			jQuery('#url_pattern_id').removeAttr('required');
+		}
+
 			// Check if T&C is in edit state then set version and client is readonly
 			var tc_id = jQuery("#tc_id").val();
 
