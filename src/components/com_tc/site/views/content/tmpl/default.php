@@ -34,16 +34,14 @@ use Joomla\CMS\HTML\HTMLHelper;
 			?>
 			<div class="well well-condensed">
 			<div class="">
-				<h1><?php echo $this->termsandconditions->title; ?></h1>
+				<h1 class="center"><?php echo $this->termsandconditions->title; ?></h1>
 				<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_VERSION") . $this->termsandconditions->version; ?>&nbsp;&nbsp;
-				<?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") .
-				HTMLHelper::_('date', $this->termsandconditions->modified_on, $this->dateFormat, true); ?></strong>
+				</strong>
 			</div>
 			<br>
-			<div class="">
-				<?php
-						echo nl2br($this->termsandconditions->content);
-		} ?>
+			<div class="" style="overflow-y: scroll; height: 250px;">
+				<?php echo nl2br($this->termsandconditions->content);
+		}?>
 			</div>
 <?php
 		$app        = JFactory::getApplication();
@@ -54,15 +52,21 @@ use Joomla\CMS\HTML\HTMLHelper;
 		<div class="">
 			 <form action="" method="post" name="form" onsubmit="return validateform(this)">
 			 <div class="checkbox">
-				<label class="padded-l-0"><input id="agree" type="checkbox" name="accept" value="1"> <?php	echo JText::_('COM_TC_LATEST_TERMSANDCONDITIONS_AGREE'); ?><span></span></label>
+				<label class="padded-l-0"><input id="agree" type="checkbox" name="accept" value="1">
+				<?php	echo JText::_('COM_TC_LATEST_TERMSANDCONDITIONS_AGREE'); ?><span></span></label>
 			</div>
 			<input type="hidden" name="option" value="com_tc">
 			<input type="hidden" name="task" value="content.accept()">
 			<input type="hidden" name="user_id" value="<?php echo $this->user_id; ?>">
 			<input type="hidden" name="tc_id" value="<?php echo $this->tc_id; ?>">
 			<input type="hidden" name="return_url" value="<?php echo $returnURL; ?>">
+			<strong><?php echo JText::_("COM_TC_LATEST_TERMSANDCONDITIONS_UPDATED_DATE") .
+				HTMLHelper::_('date', $this->termsandconditions->modified_on, $this->dateFormat, true);?>
+			</strong>
+			<div>
 			<button class="btn btn-primary" type="submit" value="Submit" name="Submit">
 			<?php echo JText::_('COM_TC_ACCEPT_TERMSANDCONDITIONS_BUTTON'); ?></button>
+			</div>
 			</form>
 		</div>
 		</div>
