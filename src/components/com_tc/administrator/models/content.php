@@ -46,7 +46,7 @@ class TcModelContent extends AdminModel
 	 * @param   string  $prefix  A prefix for the table class name. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return    boolean    A database object
+	 * @return    Joomla\CMS\Table\Table    A database object
 	 *
 	 * @since    1.6
 	 */
@@ -61,7 +61,7 @@ class TcModelContent extends AdminModel
 	 * @param   array    $data      An optional array of data for the form to interogate.
 	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
 	 *
-	 * @return  boolean  A JForm object on success, false on failure
+	 * @return  JForm  A JForm object on success, false on failure
 	 *
 	 * @since    1.6
 	 */
