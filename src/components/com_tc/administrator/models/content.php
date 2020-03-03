@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 Use Joomla\CMS\MVC\Model\AdminModel;
-
+Use Joomla\CMS\Table;
 jimport('joomla.application.component.modeladmin');
 
 /**
@@ -52,7 +52,7 @@ class TcModelContent extends AdminModel
 	 */
 	public function getTable($type = 'Content', $prefix = 'TcTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -61,7 +61,7 @@ class TcModelContent extends AdminModel
 	 * @param   array    $data      An optional array of data for the form to interogate.
 	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
 	 *
-	 * @return  boolean  A JForm object on success, false on failure
+	 * @return  JForm A JForm object on success, false on failure
 	 *
 	 * @since    1.6
 	 */
@@ -144,7 +144,7 @@ class TcModelContent extends AdminModel
 	/**
 	 * Prepare and sanitise the table prior to saving.
 	 *
-	 * @param   JTable  $table  Table Object
+	 * @param   Table  $table  Table Object
 	 *
 	 * @return void
 	 *
@@ -555,7 +555,7 @@ class TcModelContent extends AdminModel
 	 * @param   INT  $loggedInUserId  logged in used id
 	 * @param   INT  $tcId            TC id
 	 *
-	 * @return true/false
+	 * @return true|false
 	 *
 	 * @since  1.6
 	 */
