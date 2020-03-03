@@ -585,7 +585,7 @@ class TcModelContent extends AdminModel
 	 * @param   array   $data   The data to validate.
 	 * @param   string  $group  The name of the group(defaults to null).
 	 *
-	 * @return  mixed  Array of filtered data if valid, false otherwise.
+	 * @return  mixed  array of filtered data if valid, false otherwise.
 	 *
 	 * @since   1.1
 	 */
@@ -602,7 +602,7 @@ class TcModelContent extends AdminModel
 			if (($option == 'com_tc') && ($view == 'content'))
 			{
 				$this->setError(JText::_('COM_TC_INVALID_URL_PATTERN'));
--
+
 				return false;
 			}
 
