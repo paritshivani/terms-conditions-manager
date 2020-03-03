@@ -53,7 +53,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 			 <form action="" method="post" name="form" onsubmit="return validateform(this)">
 			 <div class="checkbox">
 				<label class="padded-l-0"><input id="agree" type="checkbox" name="accept" value="1">
-				<?php	echo JText::_('COM_TC_LATEST_TERMSANDCONDITIONS_AGREE'); ?><span></span></label>
+				<?php	echo JText::_('COM_TC_LATEST_TERMSANDCONDITIONS_AGREE'); ?></label>
 			</div>
 			<input type="hidden" name="option" value="com_tc">
 			<input type="hidden" name="task" value="content.accept()">
