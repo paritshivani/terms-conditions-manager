@@ -599,7 +599,7 @@ class TcModelContent extends JModelAdmin
 			$option = $pattern['option'];
 			$view = $pattern['view'];
 
-			if ($option = 'com_tc' && $view = 'content')
+			if (($option == 'com_tc') && ($view == 'content'))
 			{
 				$this->setError(JText::_('COM_TC_INVALID_URL_PATTERN'));
 
