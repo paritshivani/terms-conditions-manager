@@ -599,6 +599,7 @@ class TcModelContent extends AdminModel
 			$option = $pattern['option'];
 			$view = $pattern['view'];
 
+			// Don't allow to add T&C for same component.
 			if (($option == 'com_tc') && ($view == 'content'))
 			{
 				$this->setError(JText::_('COM_TC_INVALID_URL_PATTERN'));
