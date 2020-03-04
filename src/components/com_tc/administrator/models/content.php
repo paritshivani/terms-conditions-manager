@@ -10,6 +10,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
+Use Joomla\CMS\MVC\Model\AdminModel;
 
 jimport('joomla.application.component.modeladmin');
 
@@ -18,7 +19,7 @@ jimport('joomla.application.component.modeladmin');
  *
  * @since  1.6
  */
-class TcModelContent extends JModelAdmin
+class TcModelContent extends AdminModel
 {
 	/**
 	 * @var      string    The prefix to use with controller messages.
@@ -45,7 +46,7 @@ class TcModelContent extends JModelAdmin
 	 * @param   string  $prefix  A prefix for the table class name. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return    JTable    A database object
+	 * @return    Joomla\CMS\Table\Table    A database object
 	 *
 	 * @since    1.6
 	 */
@@ -67,7 +68,6 @@ class TcModelContent extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Initialise variables.
-		$app = Factory::getApplication();
 
 		// Get the form.
 		$form = $this->loadForm(
@@ -233,7 +233,7 @@ class TcModelContent extends JModelAdmin
 	 * @param   STRING  $tcVersion  TC version
 	 * @param   STRING  $tcClient   TC client
 	 *
-	 * @return  void
+	 * @return  boolean|string
 	 *
 	 * @since   3.0
 	 */
@@ -281,7 +281,7 @@ class TcModelContent extends JModelAdmin
 	 * @param   STRING  $option  component  option name
 	 * @param   STRING  $view    component view name
 	 *
-	 * @return void
+	 * @return array|array<mixed,mixed>
 	 *
 	 * @since  1.6
 	 */
@@ -315,7 +315,7 @@ class TcModelContent extends JModelAdmin
 	 * @param   INT  $loggedInUserId  logged in used id
 	 * @param   INT  $tcId            TC id
 	 *
-	 * @return void
+	 * @return array
 	 *
 	 * @since  1.6
 	 */
@@ -370,7 +370,7 @@ class TcModelContent extends JModelAdmin
 	 *
 	 * @param   INT  $tcId  TC id
 	 *
-	 * @return void
+	 * @return boolean
 	 *
 	 * @since  1.6
 	 */
@@ -585,7 +585,7 @@ class TcModelContent extends JModelAdmin
 	 * @param   array   $data   The data to validate.
 	 * @param   string  $group  The name of the group(defaults to null).
 	 *
-	 * @return  mixed  Array of filtered data if valid, false otherwise.
+	 * @return  mixed  array of filtered data if valid, false otherwise.
 	 *
 	 * @since   1.1
 	 */
@@ -598,6 +598,14 @@ class TcModelContent extends JModelAdmin
 		{
 			$option = $pattern['option'];
 			$view = $pattern['view'];
+
+			// Don't allow to add T&C for same component.
+			if (($option == 'com_tc') && ($view == 'content'))
+			{
+				$this->setError(JText::_('COM_TC_INVALID_URL_PATTERN'));
+
+				return false;
+			}
 
 			if ($global == 0 && (empty($option) || empty($view)))
 			{
