@@ -29,7 +29,7 @@
     <field name="enforce_delay_days" type="hidden" required="" label="COM_TC_FORM_LBL_CONTENT_ENFORCE_DELAYS_DAY" description="COM_TC_FORM_LBL_CONTENT_ENFORCE_DELAYS_DAY_DESC" hint="COM_TC_FORM_LBL_CONTENT_ENFORCE_DELAYS_DAY" />
     <field name="created_by" type="hidden" default="0" filter="integer" />
     <field name="modified_by" type="hidden" default="0" filter="integer" />
-    <field name="created_on" type="hidden" filter="unset" />
-    <field name="modified_on" type="hidden" filter="unset" />
+    <field name="created_on" type="calendar" filter="user_utc" />
+    <field name="modified_on" type="calendar" filter="user_utc" />
   </fieldset>
 </form>
