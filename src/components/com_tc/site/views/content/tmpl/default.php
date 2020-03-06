@@ -13,15 +13,15 @@ use Joomla\CMS\HTML\HTMLHelper;
 $document = JFactory::getDocument();
 
 // Add styles
-$style = '.tc-box {'
-					. 'border-top-style: ridge;'
-					. 'border-right-style: hidden;'
-					. 'border-bottom-style: ridge;'
-					. 'border-left-style: hidden;'
-					. 'overflow-y: auto;'
-					. 'max-height: 300px;'
-					. 'overflow-x: hidden;'
-					. '}';
+$style = " .tc-box {
+  border-top-style: ridge;
+  border-right-style: hidden;
+  border-bottom-style: ridge;
+  border-left-style: hidden;
+  overflow-y: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+}";
 $document->addStyleDeclaration($style);
 ?>
 		<script>
