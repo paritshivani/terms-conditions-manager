@@ -10,7 +10,19 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
 use Joomla\CMS\HTML\HTMLHelper;
+$document = JFactory::getDocument();
 
+// Add styles
+$style = '.tc-box {'
+        . 'border-top-style: ridge;'
+        . 'border-right-style: hidden;'
+        . 'border-bottom-style: ridge;'
+        . 'border-left-style: hidden;'
+        . 'overflow-y: auto;'
+		. 'max-height: 300px;'
+		. 'overflow-x: hidden;'
+        . '}';
+$document->addStyleDeclaration($style);
 ?>
 		<script>
 			function validateform(form)
@@ -39,7 +51,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 				</strong></div>
 			</div>
 			<br>
-			<div class="well" style="overflow-y: auto;max-height: 300px;overflow-x: hidden;">
+			<div class="tc-box">
 				<?php echo nl2br($this->termsandconditions->content);
 		}?>
 			</div>
